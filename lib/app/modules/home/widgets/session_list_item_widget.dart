@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:droidcon_nairobi/app/modules/home/widgets/session_room.dart';
 import 'package:droidcon_nairobi/app/modules/home/widgets/session_duration.dart';
 import 'package:droidcon_nairobi/app/models/session_model.dart';
-import 'package:logger/logger.dart';
 import 'package:droidcon_nairobi/app/routes/app_routes.dart';
+import 'package:droidcon_nairobi/app/modules/home/widgets/favourite_session_icon.dart';
 
 class SessionListItemWidget extends StatelessWidget {
   final Session session;
@@ -24,9 +24,6 @@ class SessionListItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var logger = Logger();
-    logger.d('XX');
-    logger.d(session.speakers);
     return GestureDetector(
         onTap: () {
           Get.toNamed(Routes.session, arguments: session);
@@ -89,9 +86,9 @@ class SessionListItemWidget extends StatelessWidget {
                                   style: Theme.of(context).textTheme.titleSmall,
                                 ),
                               ),
-                              //if (!session.isNotATalk) ...{
-                              //  FavouriteSessionIcon(sessionId: session.id),
-                              //}
+                              if (!session.isNotATalk) ...{
+                                FavouriteSessionIcon(sessionId: session.id!),
+                              }
                             ],
                           ),
                           const SizedBox(height: 8),
@@ -102,12 +99,11 @@ class SessionListItemWidget extends StatelessWidget {
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                           const SizedBox(height: 8),
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SessionRoom(
-                                  roomName: 'Room A'), //roomName: roomName),
-                              SizedBox(width: 4),
+                              SessionRoom(roomName: session.roomName),
+                              const SizedBox(width: 4),
                               Row(
                                 children: [
                                   // SessionFormat(
@@ -115,10 +111,10 @@ class SessionListItemWidget extends StatelessWidget {
                                   //   hideSessionFormatIfItIsSession:
                                   //       hideSessionFormatIfItIsSession ?? false,
                                   // ),
-                                  SizedBox(width: 4),
+                                  const SizedBox(width: 4),
                                   SessionDuration(
-                                      durationInMinutes: 30, //session.duration,
-                                      isNotATalk: false), //session.isNotATalk),
+                                      durationInMinutes: session.duration,
+                                      isNotATalk: session.isNotATalk),
                                 ],
                               ),
                             ],

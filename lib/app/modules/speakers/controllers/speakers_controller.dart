@@ -19,10 +19,6 @@ class SpeakersController extends GetxController {
 
   Future refreshSpeakers({bool showMessage = false}) async {
     await getSpeakers();
-    if (showMessage == true) {
-      Get.showSnackbar(Ui.successSnackBar(
-          message: "List of speakers refreshed successfully".tr));
-    }
   }
 
   Future getSpeakers() async {

@@ -5,6 +5,7 @@ class Speaker extends Model {
   late String title;
   late String worksAt;
   late String bio;
+  late String image;
   String? twitter;
   String? linkedIn;
   String? github;
@@ -21,6 +22,7 @@ class Speaker extends Model {
     twitter = json['twitter'];
     linkedIn = json['linkedIn'];
     github = json['github'];
+    image = json['image'];
   }
 
   Map<String, dynamic> toJson() {
@@ -33,6 +35,7 @@ class Speaker extends Model {
     data['twitter'] = twitter;
     data['linkedIn'] - linkedIn;
     data['github'] = github;
+    data['image'] = image;
     return data;
   }
 }

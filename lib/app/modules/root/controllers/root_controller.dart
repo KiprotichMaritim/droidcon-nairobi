@@ -2,7 +2,6 @@ import 'package:droidcon_nairobi/app/modules/speakers/controllers/speakers_contr
 import 'package:droidcon_nairobi/app/modules/speakers/views/speakers_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 
 import 'package:droidcon_nairobi/app/routes/app_routes.dart';
 import 'package:droidcon_nairobi/app/modules/home/views/home_view.dart';
@@ -25,14 +24,10 @@ class RootController extends GetxController {
 
   Future<void> changePageInRoot(int _index) async {
     currentIndex.value = _index;
-    var logger = Logger();
-    logger.d('Update index is : $currentIndex');
     await refreshPage(_index);
   }
 
   Future<void> refreshPage(int _index) async {
-    var logger = Logger();
-    logger.d('NXBCNXBNXBC');
     switch (_index) {
       case 0:
         {
@@ -41,7 +36,8 @@ class RootController extends GetxController {
         }
       case 1:
         {
-          await Get.put(SpeakersController().refreshSpeakers());
+          await Get.put(
+              SpeakersController().refreshSpeakers(showMessage: false));
           break;
         }
     }

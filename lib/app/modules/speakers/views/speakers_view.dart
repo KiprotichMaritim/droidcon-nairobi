@@ -18,7 +18,7 @@ class SpeakersView extends GetView<SpeakersController> {
                 ? const CustomScrollView(slivers: [
                     SliverFillRemaining(
                       child: Center(
-                          child: Text('List of speakers is emmpty',
+                          child: Text('List of speakers is empty',
                               textAlign: TextAlign.center)),
                     ),
                   ])

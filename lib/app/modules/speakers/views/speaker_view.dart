@@ -1,7 +1,7 @@
 import 'package:droidcon_nairobi/app/modules/speakers/widgets/speaker_list_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:droidcon_nairobi/app/modules/speakers/controllers/speaker_controller.dart';
 
@@ -46,6 +46,81 @@ class SpeakerView extends GetView<SpeakerController> {
               const SizedBox(height: 16),
               Text('Links:', style: Theme.of(context).textTheme.bodyMedium),
               const SizedBox(height: 12),
+              Wrap(
+                spacing: 4,
+                runSpacing: 8,
+                children: [
+                  GestureDetector(
+                    onTap: () async {},
+                    child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 12),
+                        decoration: BoxDecoration(
+                          color:
+                              Theme.of(context).primaryColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(FontAwesomeIcons.twitter,
+                                size: 14, color: Colors.grey.shade700),
+                            const SizedBox(width: 6),
+                            Text(
+                              controller.speaker.value.twitter!,
+                              style: Theme.of(context).textTheme.labelSmall,
+                            ),
+                          ],
+                        )),
+                  ),
+                  GestureDetector(
+                    onTap: () async {},
+                    child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 12),
+                        decoration: BoxDecoration(
+                          color:
+                              Theme.of(context).primaryColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(FontAwesomeIcons.linkedin,
+                                size: 14, color: Colors.grey.shade700),
+                            const SizedBox(width: 6),
+                            Text(
+                              controller.speaker.value.linkedIn!,
+                              style: Theme.of(context).textTheme.labelSmall,
+                            ),
+                          ],
+                        )),
+                  ),
+                  GestureDetector(
+                    onTap: () async {},
+                    child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 12),
+                        decoration: BoxDecoration(
+                          color:
+                              Theme.of(context).primaryColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(FontAwesomeIcons.github,
+                                size: 14, color: Colors.grey.shade700),
+                            const SizedBox(width: 6),
+                            Text(
+                              controller.speaker.value.github!,
+                              style: Theme.of(context).textTheme.labelSmall,
+                            ),
+                          ],
+                        )),
+                  )
+                ],
+              )
             ],
           ),
         ),

@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'package:droidcon_nairobi/app/routes/app_pages.dart';
 
-void main() {
+initServices() async {
+  Get.log('starting services ...');
+  await GetStorage.init();
+}
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initServices();
   runApp(GetMaterialApp(
       title: 'Droidcon Nairobi',
       initialRoute: AppPages.initial,

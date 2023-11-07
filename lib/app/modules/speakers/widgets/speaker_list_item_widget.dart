@@ -1,6 +1,7 @@
 import 'package:droidcon_nairobi/app/models/speaker_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:droidcon_nairobi/app/routes/app_routes.dart';
 
@@ -26,16 +27,32 @@ class SpeakerListItem extends StatelessWidget {
             },
             child: Row(
               children: [
-                //@todo append image URL here
-                CircleAvatar(
-                  radius: 24,
-                  child: Text(
-                    speaker.name,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineSmall!
-                        .copyWith(color: Theme.of(context).colorScheme.primary),
-                  ),
+                Container(
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                          color: Theme.of(context).colorScheme.primary)),
+                  child: speaker.image.isNotEmpty
+                      ? CachedNetworkImage(
+                          imageUrl: speaker.image,
+                          imageBuilder: (_, imageProvider) {
+                            return CircleAvatar(
+                              radius: 5,
+                              backgroundImage: imageProvider,
+                            );
+                          })
+                      : CircleAvatar(
+                          radius: 24,
+                          child: Text(
+                            speaker.name,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall!
+                                .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                          ),
+                        ),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
