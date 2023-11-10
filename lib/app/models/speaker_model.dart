@@ -1,4 +1,5 @@
 import 'package:droidcon_nairobi/app/models/model.dart';
+import 'package:droidcon_nairobi/app/models/link_model.dart';
 
 class Speaker extends Model {
   late String name;
@@ -6,9 +7,7 @@ class Speaker extends Model {
   late String worksAt;
   late String bio;
   late String image;
-  String? twitter;
-  String? linkedIn;
-  String? github;
+  late List<Link> links;
 
   Speaker();
 
@@ -19,10 +18,8 @@ class Speaker extends Model {
     title = json['title'];
     worksAt = json['worksAt'];
     bio = json['bio'];
-    twitter = json['twitter'];
-    linkedIn = json['linkedIn'];
-    github = json['github'];
     image = json['image'];
+    links = listFromJson(json, 'links', (v) => Link.fromJson(v));
   }
 
   Map<String, dynamic> toJson() {
@@ -32,10 +29,8 @@ class Speaker extends Model {
     data['title'] = title;
     data['worksAt'] = worksAt;
     data['bio'] = bio;
-    data['twitter'] = twitter;
-    data['linkedIn'] - linkedIn;
-    data['github'] = github;
     data['image'] = image;
+    data['links'] = links;
     return data;
   }
 }

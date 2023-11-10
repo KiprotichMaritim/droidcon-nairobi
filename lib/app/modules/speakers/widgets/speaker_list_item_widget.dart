@@ -37,7 +37,7 @@ class SpeakerListItem extends StatelessWidget {
                           imageUrl: speaker.image,
                           imageBuilder: (_, imageProvider) {
                             return CircleAvatar(
-                              radius: 5,
+                              radius: 24,
                               backgroundImage: imageProvider,
                             );
                           })
@@ -63,7 +63,7 @@ class SpeakerListItem extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleSmall),
                     const SizedBox(height: 4),
                     Text(
-                      speaker.bio,
+                      speaker.title,
                       style: Theme.of(context).textTheme.bodySmall,
                     )
                   ],
